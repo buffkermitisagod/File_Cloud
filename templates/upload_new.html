@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload New File</title>
+    <style>
+        body {
+            background-color: 	#0e1111;
+            color: white;
+        }
+
+        button {
+            border-radius: 12px;
+            font-size: 20px;
+            background-color: #4b5761;
+            color: white;
+            width: 150px;
+        }
+
+        button:hover {
+            background-color:white; /* Green */
+            color: #4b5761;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Start File Upload</h3>
+    <!--* the file upload will consist of several sections -->
+    <!--* 1) the file it's self                            -->
+    <!--* 2) the files name                                -->
+    <!--* 3) the location to store the file                -->
+    <!--* 4) the final subbmit button                      -->
+    <p>Location: {{dir}}</p>
+
+    <form method="POST" action="/upload_file/{{dir}}" enctype="multipart/form-data">
+        <input type="file" name="file_shiz">
+        <input type="text" name="file_name" placeholder="file name">               </br>
+        <button type="submit">Send File!</button>
+    </form> 
+</body>
+</html>

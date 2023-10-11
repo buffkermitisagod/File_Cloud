@@ -1,0 +1,10 @@
+{
+    "setup": {
+        "setup_status": false
+    },
+    "server": {
+        "port": 8080,
+        "ip": "0.0.0.0",
+        "version": "V0.1"
+    }
+}

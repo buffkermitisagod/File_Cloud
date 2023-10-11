@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASH</title>
+    <style>
+        body {
+            background-color: 	#0e1111;
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            border-radius: 12px;
+            font-size: 20px;
+            background-color: #4b5761;
+            color: white;
+            width: 150px;
+        }
+
+        button:hover {
+            background-color:white; /* Green */
+            color: #4b5761;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+    </style>
+</head>
+<body onload="load_up_files()">
+    <p>Work In Porgress</p>
+    <div id="files_section">
+        <p id="room"></p>
+    </div>
+
+</body>
+
+<!--* this is where all scripts for this page will live -->
+<script>
+    function load_up_files(){
+        let cockies = document.cookie;
+
+        var xmlHttp = new XMLHttpRequest();
+        // send a request to the /files url
+        xmlHttp.open( "GET", "/file_list", false );
+        xmlHttp.setRequestHeader("Cookie",cockies);
+        xmlHttp.send(null);
+
+        document.getElementById("files_section").innerHTML = create_html_from_list(String(xmlHttp.responseText));
+
+
+    }
+
+    // htmlify the files we got
+    function create_html_from_list(list){
+        let new_list = list.split("@");
+        let full_html = "";
+
+        for (var i = 0; i < new_list.length; i++){
+            full_html += `
+            <h3>`+new_list[i]+`</h3>
+            <a href="dir_list/`+new_list[i]+`"><button>View Derectory</button></a>
+            `
+        }
+
+        return full_html;
+    }
+</script>
+</html>

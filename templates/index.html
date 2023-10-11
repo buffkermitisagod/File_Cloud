@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome.</title>
+
+    <style>
+        body {
+            background-color: 	#121212;
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            border-radius: 12px;
+            font-size: 20px;
+            background-color: #5a5454;
+            color: white;
+            width: 150px;
+        }
+
+        button:hover {
+            background-color:#7c6f6f;
+            color: #fcfcfc;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        div {
+            background-color: #2c2a2a;
+        }
+
+        .form_name {
+            color: #8a8a8a;
+            font-size: small;
+
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>Please login below</p>
+        <p>{{err}}</p>
+        <form method="POST" action="/login">
+            <p class="form_name">Username:</p>
+            <input type="text" id="name" name="user"> </br>
+            <p class="form_name">Password:</p>
+            <input type="password" id="pass" name="pass"> </br>
+            <button type="submit">Login!</button>
+        </form>
+    </div>
+
+</body>
+</html>

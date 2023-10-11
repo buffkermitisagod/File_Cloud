@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DASH</title>
+        <style>
+        body {
+            background-color: 	#121212;
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            border-radius: 12px;
+            font-size: 20px;
+            background-color: #5a5454;
+            color: white;
+            width: 150px;
+        }
+
+        button:hover {
+            background-color:#7c6f6f;
+            color: #fcfcfc;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        body {
+            background-color: 	#121212;
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            border-radius: 12px;
+            font-size: 20px;
+            background-color: #5a5454;
+            color: white;
+            width: 150px;
+        }
+
+        button:hover {
+            background-color:#7c6f6f;
+            color: #fcfcfc;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+
+        .dropbtn {
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2e2c2c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            }
+
+        .dropdown-content a:hover {background-color: #413e3e;}
+        .dropdown:hover .dropdown-content {display: block;}
+
+
+    
+        </style>
+    </head>
+    <body>
+        <body onload="load_up_files()">
+            <p>Work In Porgress</p>
+            <div id="files_section">
+                <p id="room"></p>
+            </div>        
+    </body>
+
+    <script>
+        function load_up_files(){
+            let cockies = document.cookie;
+            let url = window.location;
+            let url_new = String(url).split("/")[4]
+
+            var xmlHttp = new XMLHttpRequest();
+            // send a request to the /files url
+            xmlHttp.open( "GET", "/dir/"+url_new, false );
+            xmlHttp.setRequestHeader("Cookie",cockies);
+            xmlHttp.send(null);
+
+            document.getElementById("files_section").innerHTML = create_html_from_list(String(xmlHttp.responseText));
+
+
+        }
+
+        function create_html_from_list(list){
+            let full_html = "";
+
+            if(String(list) == ""){
+                full_html += "<b>No files found</b>"
+            } else {
+                let new_list = list.split("#");
+
+                for (var i = 0; i < new_list.length; i++){
+                    full_html += `
+                    <b>`+new_list[i].split("@")[1]+`</b>
+                    <div class="dropdown">
+                        <button class="dropbtn">𓃑</button>
+                        <div class="dropdown-content">
+                        <a href="/files_down/`+new_list[i]+`">Download</a>
+                        <a href="/create_share/`+new_list[i]+`">Share</a>
+                        <a href="/delete/`+new_list[i]+`">Delete</a>
+                        </div>
+                    </div>
+                    `;
+                }
+            }
+
+            full_html += `</br><a href="/files_upld/`+String(window.location).split("/")[4]+`""><button>Upload</button></a>`;
+
+            return full_html;
+        }
+    </script>
+</html>
