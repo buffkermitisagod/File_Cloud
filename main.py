@@ -1,5 +1,5 @@
 from flask import *
-import logging, os
+import logging, os, sys
 
 #* local imports
 from mod.users import users
@@ -26,10 +26,13 @@ files = file_handler()
 # todo # also check for a -s flag to enter a new setup phase
 # todo # read config
 # todo # parse it all to a class (make it easier)
-PORT = 8080
-SETUP_STAT = "DONE!"
-DEBUG_LVL = 0
 
+
+if "-s" in sys.argv:
+    runner.run()
+if "-u" in sys.argv:
+    print("u")
+    runner.users()
 
 print("""
 \x1B[2J\x1B[1;1H
@@ -37,6 +40,9 @@ print("""
 █▄ ▄▄ █▄ ▄█▄ ▄███▄ ▄▄ ███ █ █ ▄▄ █▄ ▀█▀ ▄█▄ ▄▄ █
 ██ ▄████ ███ ██▀██ ▄█▀███ ▄ █ ██ ██ █▄█ ███ ▄█▀█
 █▄▄▄███▄▄▄█▄▄▄▄▄█▄▄▄▄▄███▄█▄█▄▄▄▄█▄▄▄█▄▄▄█▄▄▄▄▄█ """+config["version"]+"""
+
+-s -> run setup
+-u -> run user add
 
 http://"""+config["ip"]+""":"""+str(config["port"])+"""
 """)

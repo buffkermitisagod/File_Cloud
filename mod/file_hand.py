@@ -1,15 +1,15 @@
 import json, os, random
 from datetime import datetime
 
+
 class file_handler:
     def __init__(self) -> None:
-        pass
-
-    def list_files(self) -> str:
+        pass 
+    
+    def list_files(self, user) -> str:
         files = ""
 
-        files = os.listdir("files")
-        files.remove("data")
+        files = os.listdir("files"+"/user_"+user)
         
         file = "@".join(files)
         return file
@@ -79,3 +79,4 @@ class file_handler:
         else:
             return False
         
+ 

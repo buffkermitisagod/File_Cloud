@@ -23,6 +23,7 @@ class setup:
             self.print_menu()
             self.port()
             self.ip()
+            self.print_menu()
             self.users()
 
             file = open("config.json", "w")
@@ -79,9 +80,7 @@ class setup:
                 self.config["server"]["ip"] = "0.0.0.0"
             else:
                 print("please enter an option")
-    def users(self):
-        self.print_menu()
-        
+    def users(self):        
         run = True
         while run:
             print("User maker (this will repeat until you type 'quit')")
@@ -101,6 +100,13 @@ class setup:
                 file = open("files/data/user/"+name+".json", "x+")
                 file.write(json.dumps(js, indent=4))
                 file.close()
+
+                os.mkdir("files/user_"+name)
+                os.mkdir("files/user_"+name+"/img")
+                os.mkdir("files/user_"+name+"/misc")
+                os.mkdir("files/user_"+name+"/vid")
+
+                print("[+] derectory's made :)")
             
     def return_config(self):
         return json.loads(open("config.json", "r").read())["server"]
