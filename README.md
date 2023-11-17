@@ -3,7 +3,9 @@ a simple online file hosting platform like OneDrive or GoodleCloud that you can 
 
 # Run
 to run, use the command -> `python3 main.py`   
-or to run the setup again use -> `python3 main.py setup`
+or to run the setup again use -> `python3 main.py -s`
+or to run the user setup use -> `python3 main.py -u`
+
 
 # Current Fetures
 File upload support   
