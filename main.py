@@ -5,12 +5,17 @@ import logging, os, sys
 from mod.users import users
 from mod.file_hand import file_handler
 from mod.setups import setup
+from mod.update import update_handle
 
 #* setup chk
 runner = setup()
+updater = update_handle()
 runner.run()
 
+
 config = runner.return_config()
+updater.update_check(config["version"])
+
 
 #* set the app up
 """log = logging.getLogger('werkzeug')
