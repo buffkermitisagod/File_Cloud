@@ -10,7 +10,7 @@ class update_handle:
         js = json.loads(requests.get("https://raw.githubusercontent.com/buffkermitisagod/File_Cloud/main/config.json").text)
         git_version = js["server"]["version"]
 
-        if int(git_version.replace("v", "")) > int(cur_version.replace("v", "")):
+        if float(git_version.replace("V", "")) > float(cur_version.replace("V", "")):
             print("[!] new version out!")
             print("current ("+cur_version+") < github ("+git_version+")")
             print("[!] Downloading new version now...")
