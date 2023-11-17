@@ -4,22 +4,18 @@ a simple online file hosting platform like OneDrive or GoodleCloud that you can 
 # Run
 to run, use the command -> `python3 main.py`   
 or to run the setup again use -> `python3 main.py -s`
-or to run the user setup use -> `python3 main.py -u`
+or to run the user setup use -> `python3 main.py -u`   
 
-
-# Current Fetures
-File upload support   
-Login functinality   
-Coockie sessions   
-File Sharing without login (single file only)
-File Deletion support   
-Json config file w/ first time boot support for setup
+# Updates
+version 0.2 is here   
+- a simple update function
+- seprate storage containers for each users
 
 # ToDo
 - [ ] Command support (eg: to run File_Cloud you type `File_Cloud` into your termnial)
 - [ ] On Boot support
 - [ ] HTTPS Support
 - [ ] File Encryption
-- [ ] Multiple users having seprate storage 
+- [X] Multiple users having seprate storage 
 - [ ] external storage support
 - [ ] easy css custimizeation support
